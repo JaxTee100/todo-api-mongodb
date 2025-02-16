@@ -1,4 +1,4 @@
-const User = require("../models/User");
+const User = require('../model/User')
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
@@ -56,10 +56,10 @@ const registerUser = async (req, res) => {
 
 const loginUser = async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     //find if the current user is exists in database or not
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
 
     if (!user) {
       return res.status(400).json({
